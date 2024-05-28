@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@400;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+:root {
+    font-size: 16px;
+}
+body{
+    background: url("../images/background.png");
+    color: #f2f2f2;
+}
+.container{
+    width: 100%;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login{
+    width: 100%;
+    max-width: 330px;
+    background-color: #c9c9c95e;
+    border-radius: 20px;
+    padding: 20px;
+    display: none;
+
+}
+.login > h2 {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.5 rem;
+    margin-bottom: 20px;
+    
+}
+.login__form{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.login__input{
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-family: 600;
+    background-color: #00000057;
+    color: #f2f2f2;
+    outline: none;
+}
+
+.login__input:focus{
+    outline: 2px solid rgb(145, 255, 0);
+}
+
+.login__button{
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-size:1rem;
+    font-family: 700;
+    background-color:rgb(145, 255, 0);
+    cursor: pointer;
+    color: #000000;
+
+}
+
+
+
+.login__button:hover{
+    background-color:rgb(0, 255, 21);
+}
+
+.chat{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.chat__mensage{
+    flex-grow: 1;
+}
+.chat__form{
+    background-color: #191919;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap:10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+.chat__input{
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    flex-grow: 1;
+    background-color: #212121;
+    color:#f2f2f2;
+    outline: none;
+    font-size: 1rem;
+}
+
+.chat__button{
+    background: none;
+    border: none;
+    color: #f1f1f1;
+    cursor: pointer;
+}
+.chat__button > span{
+    font-size: 2rem;
+}
