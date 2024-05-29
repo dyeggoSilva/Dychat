@@ -27,7 +27,7 @@ body{
     background-color: #c9c9c95e;
     border-radius: 20px;
     padding: 20px;
-    display: none;
+   
 
 }
 .login > h2 {
@@ -79,13 +79,18 @@ body{
 .chat{
     width: 100%;
     height: 100%;
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: space-between;
 }
 
 .chat__mensage{
     flex-grow: 1;
+    padding: 30px 30px 90px;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: flex-end;
 }
 .chat__form{
     background-color: #191919;
@@ -112,9 +117,40 @@ body{
 .chat__button{
     background: none;
     border: none;
-    color: #f1f1f1;
+    color: rgb(145, 255, 0);
     cursor: pointer;
 }
 .chat__button > span{
     font-size: 2rem;
+}
+
+.chat__mensage > div{
+    padding: 10px;
+    width: 100%;
+    max-width: 250px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+    line-height: 22px;
+}
+
+.manssage__self{
+   
+    background-color: rgba(91, 160, 0, 0.719);
+    color: #fff;
+    border-radius:  10px 10px 0px 10px;
+    align-self: flex-end;
+}
+
+.menssage__sender{
+    display: block;
+    margin-bottom: 15px;
+    font-weight: 700;
+    color: rgb(101, 240, 250);
+}
+.manssage__other{
+    background-color: rgba(92, 97, 86, 0.719);
+    color: #fff;
+    border-radius:  0px 10px 10px 10px;
+    align-self: flex-start;
 }
