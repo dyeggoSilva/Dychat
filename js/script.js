@@ -8,6 +8,7 @@ const chatInput = document.querySelector(".chat__input")
 const chatMessage = document.querySelector(".chat__mensage")
 
 
+
 const colors = [
     "cabetblue",
     "darkgoldenrod",
@@ -28,6 +29,13 @@ div.innerHTML = content
 return div
 }
 
+function notification(){
+
+    const x = document.getElementById("audio")
+    x.play();
+
+}
+
 const createMessageOtherElement = (content, sender, senderColor)=>{
     const div = document.createElement("div")
     const span = document.createElement("span")
@@ -41,7 +49,9 @@ const createMessageOtherElement = (content, sender, senderColor)=>{
 
     span.innerHTML = sender
     div.innerHTML += content
-
+    notification()
+   
+  
     return div
     }
 
@@ -60,11 +70,11 @@ const processMessage = ({data})=>{
     const{userId, userName, userColor, content} = JSON.parse(data)
     const message = userId == user.id
     ? createMessageSelfElement(content)
-    : createMessageOtherElement(content, userName, userColor)
+    : createMessageOtherElement(content, userName, userColor, notification)
 
     chatMessage.appendChild(message)
     scrollScreen()
-
+    
 
 }
 
@@ -83,6 +93,7 @@ const handleLogin = (event)=>{
    }
 
    const sendMessage = (event)=>{
+
     event.preventDefault()
     
 
@@ -98,4 +109,5 @@ const handleLogin = (event)=>{
    }
 
    loginForm.addEventListener("submit", handleLogin)
+   
    chatForm.addEventListener("submit", sendMessage)
