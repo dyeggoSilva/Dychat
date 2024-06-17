@@ -7,8 +7,6 @@ const chatForm = document.querySelector(".chat__form")
 const chatInput = document.querySelector(".chat__input")
 const chatMessage = document.querySelector(".chat__mensage")
 
-
-
 const colors = [
     "cabetblue",
     "darkgoldenrod",
@@ -36,78 +34,122 @@ function notification(){
 
 }
 
-const createMessageOtherElement = (content, sender, senderColor)=>{
-    const div = document.createElement("div")
-    const span = document.createElement("span")
-    div.classList.add("manssage__other")
+function cat(){
 
-    div.classList.add("manssage__self")
-    span.classList.add("menssage__sender")
-    span.style.color = senderColor
+    const x = document.getElementById("audio2")
+    x.play();
 
-    div.appendChild(span)
+}
+function dog(){
 
-    span.innerHTML = sender
-    div.innerHTML += content
-    notification()
-   
-  
-    return div
-    }
+    const x = document.getElementById("audio3")
+    x.play();
 
-const getRandonColor = ()=>{
-    const randonIndex = Math.floor(Math.random()*colors.length)
-    return colors[randonIndex]
 }
 
-const scrollScreen = ()=>{
-    window.scrollTo({
-        top: document.body.scrollHeight, behavior: "smooth"
-    })
-}
-
-const processMessage = ({data})=>{
-    const{userId, userName, userColor, content} = JSON.parse(data)
-    const message = userId == user.id
-    ? createMessageSelfElement(content)
-    : createMessageOtherElement(content, userName, userColor, notification)
-
-    chatMessage.appendChild(message)
-    scrollScreen()
+    const createMessageOtherElement = (content, sender, senderColor)=>{
+        const div = document.createElement("div")
+        const span = document.createElement("span")
+        div.classList.add("manssage__other")
     
-
-}
-
-const handleLogin = (event)=>{
-    event.preventDefault()
-    user.id = crypto.randomUUID()
-    user.name = loginInput.value
-    user.color = getRandonColor()
-
-    login.style.display = "none"
-    chat.style.display = "flex"
-
-    websocket = new WebSocket("wss://dychat-beckend.onrender.com")
-    websocket.onmessage = processMessage
-
-   }
-
-   const sendMessage = (event)=>{
-
-    event.preventDefault()
+        div.classList.add("manssage__self")
+        span.classList.add("menssage__sender")
+        span.style.color = senderColor
     
-
-    const message = {
-        userId: user.id,
-        userName: user.name,
-        userColor: user.color,
-        content: chatInput.value
+        div.appendChild(span)
+    
+        span.innerHTML = sender
+        div.innerHTML += content
+        notification()
+    
+        return div
+        }
+    
+    const getRandonColor = ()=>{
+        const randonIndex = Math.floor(Math.random()*colors.length)
+        return colors[randonIndex]
     }
-    websocket.send(JSON.stringify(message))
-    chatInput.value =""
+    
+    const scrollScreen = ()=>{
+        window.scrollTo({
+            top: document.body.scrollHeight, behavior: "smooth"
+        })
+    }
+    
+    const processMessage = ({data})=>{
+        const{userId, userName, userColor, content} = JSON.parse(data)
+        if(content == "/dog"){
+            dog()
+        }else if(content == "/cat"){
+            cat()
+        }else if(content=="/via-cep"){
 
-   }
 
-   loginForm.addEventListener("submit", handleLogin)
-   
-   chatForm.addEventListener("submit", sendMessage)
+            fetch(`viacep.com.br/ws/${content}/json/`)
+            .then(response => {
+                if (!response.ok) {
+                throw new Error('Erro ao executar a requisição HTTP: ' + response.status);
+                }
+                return response.json(); // Parseando a resposta JSON
+            })
+            .then(data => {
+                // Manipular os dados recebidos
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Erro ao obter dados da API:', error);
+            });
+
+            console.log(`viacep.com.br/ws/${content}/json/`)
+
+
+
+        }
+        
+            const message = userId == user.id
+        ? createMessageSelfElement(content)
+        : createMessageOtherElement(content, userName, userColor)
+    
+        chatMessage.appendChild(message)
+        }
+        scrollScreen()
+        
+    
+    
+    
+    const handleLogin = (event)=>{
+        event.preventDefault()
+        user.id = crypto.randomUUID()
+        user.name = loginInput.value
+        user.color = getRandonColor()
+    
+        login.style.display = "none"
+        chat.style.display = "flex"
+    
+        websocket = new WebSocket("wss://dychat-beckend.onrender.com")
+        websocket.onmessage = processMessage
+    
+       }
+    
+       const sendMessage = (event)=>{
+    
+        event.preventDefault()
+        
+    
+        const message = {
+            userId: user.id,
+            userName: user.name,
+            userColor: user.color,
+            content: chatInput.value
+        }
+        websocket.send(JSON.stringify(message))
+        chatInput.value =""
+    
+       }
+    
+       loginForm.addEventListener("submit", handleLogin)
+       
+       chatForm.addEventListener("submit", sendMessage)
+       
+
+
