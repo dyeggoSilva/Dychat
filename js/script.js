@@ -82,30 +82,7 @@ function dog(){
             dog()
         }else if(content == "/cat"){
             cat()
-        }else if(content=="/via-cep"){
-
-
-            fetch(`viacep.com.br/ws/${content}/json/`)
-            .then(response => {
-                if (!response.ok) {
-                throw new Error('Erro ao executar a requisição HTTP: ' + response.status);
-                }
-                return response.json(); // Parseando a resposta JSON
-            })
-            .then(data => {
-                // Manipular os dados recebidos
-                console.log(data);
-            })
-            .catch(error => {
-                console.error('Erro ao obter dados da API:', error);
-            });
-
-            console.log(`viacep.com.br/ws/${content}/json/`)
-
-
-
         }
-        
             const message = userId == user.id
         ? createMessageSelfElement(content)
         : createMessageOtherElement(content, userName, userColor)
