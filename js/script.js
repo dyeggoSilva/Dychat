@@ -114,11 +114,11 @@ const handleApiProxy = async (command) => {
                 url = `https://f8d5d234-762e-4e7b-b2e4-79887499e770-00-301ouu5jbkc79.riker.replit.dev/api/${command}`;
                 break;
             default:
-                throw new Error(`Comando de imagem desconhecido: ${command}`);
+                throw new Error(`Comando de imagem incorreto: ${command}`);
         }
         const response = await fetch(url);
         if (!response.ok) {
-            throw new Error(`Erro ao buscar imagem ${command}`);
+            throw new Error(`Erro ao exibir resultado de imagem ${command}`);
         }
         const data = await response.json();
 
