@@ -71,7 +71,7 @@ const scrollScreen = () => {
 
 const handleViaCep = async (cep) => {
     try {
-        const response = await fetch(`http://localhost:3000/cep/${cep}`);
+        const response = await fetch(`https://a1ef5589-e7d7-477c-9b49-baf847659e54-00-1ru9og2pg9818.worf.replit.dev/`);
         if (!response.ok) {
             throw new Error("Erro ao buscar o CEP");
         }
