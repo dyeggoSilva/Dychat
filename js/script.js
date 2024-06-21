@@ -97,6 +97,7 @@ const handleCrudPessoas = async (nome) => {
         }
         const data = await response.json();
 
+        // Aqui você pode retornar uma mensagem de confirmação ou os dados da pessoa cadastrada, se necessário
         return `Pessoa cadastrada com sucesso!`;
     } catch (error) {
         return `Erro: ${error.message}`;
@@ -122,7 +123,7 @@ const handleApiProxy = async (command) => {
         const data = await response.json();
 
         // Retorna a URL da imagem para ser exibida no chat
-        return data.url;
+        return `<img src="${data.url}" alt="Imagem ${command}" style="max-width: 100%;">`;
     } catch (error) {
         return `Erro: ${error.message}`;
     }
