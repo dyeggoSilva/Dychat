@@ -1,7 +1,7 @@
 # Projeto de Chat
 
 Este projeto consiste em desenvolver um sistema de chat integrado com a API da OpenAI, várias APIs 
-externas para funcionalidades adicionais, e um backend para gerenciamento de usuários e outras operações CRUD.
+externas para funcionalidades adicionais, e um backend para gerenciamento de usuários e outras operações crud.
 
 # Funcionalidades Implementadas:
 
