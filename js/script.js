@@ -70,10 +70,18 @@ const scrollScreen = () => {
 }
 
 const handleViaCep = async (cep) => {
-    const response = await fetch(`https://a1ef5589-e7d7-477c-9b49-baf847659e54-00-1ru9og2pg9818.worf.replit.dev/${cep}`)
-    const data = await response.json()
-    return `CEP: ${data.cep}, Logradouro: ${data.logradouro}, Bairro: ${data.bairro}, Cidade: ${data.localidade}, Estado: ${data.uf}`
-}
+    try {
+        const response = await fetch(`http://localhost:3000/cep/${cep}`);
+        if (!response.ok) {
+            throw new Error("Erro ao buscar o CEP");
+        }
+        const data = await response.json();
+        return `CEP: ${data.cep}, Logradouro: ${data.logradouro}, Bairro: ${data.bairro}, Cidade: ${data.localidade}, Estado: ${data.uf}`;
+    } catch (error) {
+        return `Erro: ${error.message}`;
+    }
+};
+
 
 const handleCrudPessoas = async (id) => {
     const response = await fetch(`https://d2ec98f2-c047-4b8f-aac4-ef46f817f822-00-13ndp6wmlr5us.kirk.replit.dev/pessoas/${id}`)
