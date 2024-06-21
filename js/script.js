@@ -97,7 +97,7 @@ const handleCrudPessoas = async (nome) => {
         }
         const data = await response.json();
 
-        // Aqui você pode retornar uma mensagem de confirmação ou os dados da pessoa cadastrada, se necessário
+        // Aqui você pode retornar uma mensagem de confirmação ou os dados da pessoa cadastrada, caso necessário
         return `Pessoa cadastrada com sucesso!`;
     } catch (error) {
         return `Erro: ${error.message}`;
