@@ -110,7 +110,7 @@ const handleApiProxy = async (command) => {
             case "cat":
             case "dog":
             case "random":
-                url = `https://f8d5d234-762e-4e7b-b2e4-79887499e770-00-301ouu5jbkc79.riker.replit.dev/routes/${command}`;
+                url = `https://f8d5d234-762e-4e7b-b2e4-79887499e770-00-301ouu5jbkc79.riker.replit.dev/api/${command}`;
                 break;
             default:
                 throw new Error(`Comando de imagem desconhecido: ${command}`);
