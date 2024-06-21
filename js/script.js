@@ -21,10 +21,10 @@ const user = { id: "", name: "", color: "" };
 let websocket;
 
 const createMessageSelfElement = (content) => {
-    const div = document.createElement("div");
-    div.classList.add("message__self");
-    div.innerHTML = content;
-    return div;
+    const div = document.createElement("div")
+    div.classList.add("manssage__self")
+    div.innerHTML = content
+    return div
 };
 
 function notification() {
@@ -43,20 +43,22 @@ function dog() {
 }
 
 const createMessageOtherElement = (content, sender, senderColor) => {
-    const div = document.createElement("div");
-    const span = document.createElement("span");
-    div.classList.add("message__other");
+    const div = document.createElement("div")
+    const span = document.createElement("span")
+    div.classList.add("manssage__other")
+    
+    div.classList.add("manssage__self")
+    span.classList.add("menssage__sender")
+    span.style.color = senderColor
+    
+    div.appendChild(span)
 
-    span.classList.add("message__sender");
-    span.style.color = senderColor;
-
-    span.innerHTML = sender;
-    div.appendChild(span);
-    div.innerHTML += content;
-    notification();
-
-    return div;
-};
+ 
+    span.innerHTML = sender
+    div.innerHTML += content
+    notification()
+    return div
+}
 
 const getRandonColor = () => {
     const randomIndex = Math.floor(Math.random() * colors.length);
@@ -148,7 +150,8 @@ const processMessage = async ({ data }) => {
         cat();
     }
 
-    const message = userId === user.id
+
+    const message = userId == user.id
         ? createMessageSelfElement(messageContent)
         : createMessageOtherElement(messageContent, userName, userColor);
 
